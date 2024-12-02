@@ -100,10 +100,6 @@
             <version>7.18.1</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit-platform-engine -->
-
-
-
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -117,13 +113,6 @@
             <version>2.28.1</version>
             <scope>test</scope>
         </dependency>
-
-
-
-        <!-- Add necessary Allure dependencies to dependencies section -->
-
-
-
 
         <!-- Add necessary Allure dependencies to dependencies section
         <dependency>
@@ -169,8 +158,6 @@
             <version>2.19.0</version>
         </dependency>
 
-
-
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-cucumber7-jvm</artifactId>
@@ -214,13 +201,7 @@
                             <inputDirectory>${project.build.directory}</inputDirectory>
                             <jsonFiles>
                                 <param>**/json-reports/*.json</param>
-                                <!-- Bu plugin json-reports klasoru altindaki
-                                     uzantisi .json olan dosyayi kullanarak
-                                     daha guzel rapor olusturur
-                                     Calistigimiz projede json raporlarinin
-                                     konuldugu klasor ismini veya json dosya ismini degistirirsek
-                                     o zaman 96.satirda dogru dosyayi gostermeliyiz
-                                      -->
+
                             </jsonFiles><classificationFiles>->
                             <param>sample.properties</param>
                             <param>other.properties</param>
@@ -228,7 +209,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin> <!-- Raporlama yapiyor , json-reports klasoru altindaki json dosyalarini kullanir-->
+            </plugin> <!-- Provide Json reports-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
@@ -237,13 +218,11 @@
                     <testFailureIgnore>true</testFailureIgnore>
                     <skipTests>false</skipTests>
                     <includes>
-                        <include>**/runners/*ParalelCalistirma*.java</include>
-                        <!-- runners package altinda
-                             calismasini istedigimiz Runner'larin
-                             isimlerindeki ortak bolumu yaziyoruz-->
+                        <include>**/runners/*Runner*.java</include>
+
                     </includes>
                 </configuration>
-            </plugin>  <!-- bir method fail olsa bile geriye kalan method'larin calismaya devam etmesi icin -->
+            </plugin>  <!-- If one method failed java continue working-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -251,7 +230,7 @@
                 <configuration>
                     <parallel>classes</parallel>
                     <forkMode>perthread</forkMode>
-                    <threadCount>2</threadCount> <!-- Ayni anda calisacak thread sayisi -->
+                    <threadCount>2</threadCount>
                     <reuseForks>false</reuseForks>
                     <argLine>-Duser.language=en</argLine>
                     <argLine>-Xmx1024m</argLine>
@@ -259,14 +238,12 @@
                     <argLine>-Dfile.encoding=UTF-8</argLine>
                     <useFile>false</useFile>
                     <includes>
-                        <include>**/runners/*ParalelCalistirma*.java</include>
-                        <!-- runners package altinda
-                             calismasini istedigimiz Runner'larin
-                             isimlerindeki ortak bolumu yaziyoruz-->
+                        <include>**/runners/*ParalelWorking*.java</include>
+                        <!-- Runner names put from runners package -->
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
-            </plugin> <!-- Paralel calismayi organize ediyor -->
+            </plugin> <!-- Provide paralel testing-->
         </plugins>
     </build>
 
