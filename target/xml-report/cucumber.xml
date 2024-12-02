@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="92.9" tests="9" skipped="0" failures="0" errors="0">
+<testcase classname="US_01 User create account and can sign in the application" name="TC_01 User create account with valid data" time="8.997">
+<system-out><![CDATA[
+Given User go to toUrl......................................................passed
+Then User click account button..............................................passed
+And User write email "validEmail" in the box................................passed
+And User write password "validPassword" in the box..........................passed
+Then User click signIn button...............................................passed
+And User ensure sign in the app successfully................................passed
+Then close page.............................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="US02 User don't sign in with invalid data" name="TC_02 User don't sign in with invalid email" time="7.465">
+<system-out><![CDATA[
+Given User go to toUrl......................................................passed
+Then User click account button..............................................passed
+And User write email "invalidEmail" in the box..............................passed
+And User write password "validPassword" in the box..........................passed
+When User click signIn button...............................................passed
+Then User ensure don't sign in the application..............................passed
+And close page..............................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="US02 User don't sign in with invalid data" name="TC_03 User don't sign in with invalid password" time="7.412">
+<system-out><![CDATA[
+Given User go to toUrl......................................................passed
+Then User click account button..............................................passed
+And User write email "validEmail" in the box................................passed
+And User write password "invalidPassword" in the box........................passed
+When User click signIn button...............................................passed
+Then User ensure don't sign in the application..............................passed
+And close page..............................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="US02 User don't sign in with invalid data" name="TC_04 User don't sign in with invalid email and invalid password" time="7.479">
+<system-out><![CDATA[
+Given User go to toUrl......................................................passed
+Then User click account button..............................................passed
+And User write email "invalidEmail" in the box..............................passed
+And User write password "invalidPassword" in the box........................passed
+When User click signIn button...............................................passed
+Then User ensure don't sign in the application..............................passed
+And close page..............................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="US_03 User search items in the applications" name="TC_05 User search phone and find results" time="7.47">
+<system-out><![CDATA[
+Given User go to toUrl......................................................passed
+Then user put phone in search box...........................................passed
+And user ensure the item in result..........................................passed
+And close page..............................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="US_03 User search items in the applications" name="TC_06 User search dress and find results" time="6.464">
+<system-out><![CDATA[
+Given User go to toUrl......................................................passed
+Then user put dress in search box...........................................passed
+And user ensure the item in result..........................................passed
+And close page..............................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="US_03 User search items in the applications" name="TC_07 User search nutella and find results" time="6.467">
+<system-out><![CDATA[
+Given User go to toUrl......................................................passed
+Then user put nutella in search box.........................................passed
+And user ensure the item don't find in result...............................passed
+And close page..............................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="US04 User can select product and add to cart  page" name="TC_11 User added product to cart and  take screenshot" time="14.895">
+<system-out><![CDATA[
+Given User go to toUrl......................................................passed
+When user write "Shirt" in search box.......................................passed
+Then user ensure the item in result.........................................passed
+And User take a screenshot and save it as"PageSS"...........................passed
+Then User click first product...............................................passed
+And User ensure the valid product open......................................passed
+And User add to selected product to cart....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="US04 User can select product and add to cart  page" name="TC_12 User delete product to cart" time="25.973">
+<system-out><![CDATA[
+Given User click cart button................................................passed
+And User delete the product from chart......................................passed
+And User accept delete popup................................................passed
+Then User take success message..............................................passed
+Then close page.............................................................passed
+]]></system-out>
+</testcase>
+</testsuite>
